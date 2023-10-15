@@ -67,7 +67,6 @@ export default function Img_upload(prop:{id: string, images: {url: string , loca
             axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL +'/api/imageUpload' , data )
             .then((res)=>{
                 displayMSG('s' , 'Successful! You can upload more later:)');
-                console.log(res.data);
                 let new_image = [...images , res.data]
                 setImage(new_image);
             })

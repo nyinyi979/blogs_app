@@ -9,7 +9,7 @@ import { displayMSG } from '../_componenets/pop_ups';
 type prop = {author:{username: string}[] , categories:{name: string}[] , content: string , createdAt: string , id: string , images: {url: string , location: string}[] , title:string , comments: { commentedBy: { name: string }[] , content: string }[] , _count: {reactions: number , comments: number}}[]
 export default function Blog(){
     useEffect(()=>{
-        if(localStorage.user) return;
+        if(localStorage.user && localStorage.user !=='undefined') return;
         else {
             displayMSG('e', 'You are not authorized');
             setTimeout(()=>{
@@ -30,8 +30,8 @@ function Blogs(){
     let [ count , setCount ] = useState(0);
     let { data , isLoading , isError , isFetching ,  } = useQuery<prop>({
         queryFn: ()=> axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL +'/blogsByCategories', {params: {id:localStorage.user, t:take , s:0}})
-        .then((res)=>{ console.log(res.data); setCount(res.data.count); return res.data.result;  }) 
-        .catch((err)=>{ console.log(err); return new Error("Server error occurred")}),
+        .then((res)=>{ setCount(res.data.count); return res.data.result;  }) 
+        .catch((err)=>{ return new Error("Server error occurred")}),
         queryKey: ["blogsByCategories" , take] , 
         keepPreviousData: true,
         retry: 2

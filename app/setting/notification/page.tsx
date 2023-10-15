@@ -5,7 +5,7 @@ import {useEffect} from 'react';
 import { displayMSG } from '@/app/_componenets/pop_ups';
 export default function Notification(){
     useEffect(()=>{
-        if(localStorage.user) return;
+        if(localStorage.user && localStorage.user !=='undefined') return;
         else {
             displayMSG('e', 'You are not authorized');
             setTimeout(()=>{

@@ -40,11 +40,9 @@ export default function Text_Editor(props: {id: string}){
         //stripping the categories from input into array
         let categories:string[] = [];
         category.current?.value.split(',').forEach((val)=>{categories.push(val.split("_").join(" "))})
-        console.log(categories)
         //creating axios request
         axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/createBlog', {title: title.current?.value , content: editorRef.current.getContent() , id: localStorage.user , categories: categories} )
         .then((res)=>{
-          console.log(res.data);
           window.location.assign('/profile')
         })
         .catch((err)=>{

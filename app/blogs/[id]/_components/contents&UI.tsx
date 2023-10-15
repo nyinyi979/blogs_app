@@ -6,7 +6,6 @@ type prop_ = {author:{username: string}[] , categories:{name: string}[] , conten
 type props = prop_[];
 //MIDDLE contents and loading UI
 export function GetMainContent(props:prop_){
-    console.log(props);
     return(
         <div className="grid grid-cols-2 md:col-span-2 md:row-span-6 ">
             <div className="col-span-2 text-xl text-center text-neutral">{props.title}</div>

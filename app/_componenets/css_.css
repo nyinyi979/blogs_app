@@ -11,7 +11,6 @@
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     width: 0;
-    color: red;
 }
 @keyframes typing {
     from{ width: 0; }

@@ -1,0 +1,25 @@
+.container{
+    display: block;
+  }
+.typed-out{
+    overflow: hidden;
+    border-right: .15em solid orange; 
+    white-space: nowrap;
+    animation-name: typing;
+    animation-duration: 10s;
+    animation-delay: 2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    width: 0;
+}
+@keyframes typing {
+    from{ width: 0; }
+    25%,75% { width: 28ch }
+    50% { width: 15ch}
+    100% { width:28.5ch; }
+}
+.parent::after{
+    clear:both;
+    display: table;
+    content: '';
+}

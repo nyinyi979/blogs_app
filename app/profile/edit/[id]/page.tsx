@@ -49,7 +49,6 @@ export default function Edit({params}: {params: {id: string}}){
         axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL + `/blog/${params.id}` , {params: {userID: localStorage.user}})
         .then((result)=>{
             setData(result.data);
-            console.log(result.data);
         })
         .catch((err)=>{
             setError("Server error occurred");

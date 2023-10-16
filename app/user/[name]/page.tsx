@@ -9,7 +9,7 @@ type prop = {author:{username: string}[] , categories:{name: string}[] , content
 
 export default function Blog({params}: {params: {name: string}}){
     const [queryClient] = useState(() => new QueryClient());
-    console.log(params.name);
+
     return(
     <QueryClientProvider client={queryClient}>
         <User user={decodeURIComponent(params.name)}/>

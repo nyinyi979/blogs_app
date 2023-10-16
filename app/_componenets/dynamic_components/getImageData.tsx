@@ -13,7 +13,6 @@ export default function GetThumbnail(path:string , size: "w256h256"|"w480h320"|"
         let img_data = window.URL.createObjectURL(res.result.fileBlob);
         document.getElementById(element)?.setAttribute('src',img_data);
     }).catch((err)=>{
-        console.log(err);
         return "error";
     });
     return "not good";

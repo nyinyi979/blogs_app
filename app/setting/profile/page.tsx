@@ -10,7 +10,7 @@ type prop = {id: string, name: string, username: string, email: string, phone: s
 export default function Setting(){
     //checking user
     useEffect(()=>{
-        if(localStorage.user) return;
+        if(localStorage.user && localStorage.user !=='undefined') return;
         else {
             displayMSG('e', 'You are not authorized');
             setTimeout(()=>{
@@ -60,7 +60,6 @@ export default function Setting(){
         })
         .catch((err)=>{
             setError(true);
-            console.log(err);
         })
     }, [userID ])
     return (

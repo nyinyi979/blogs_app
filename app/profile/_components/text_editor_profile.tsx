@@ -33,7 +33,6 @@ export default function Text_EditorP(props: {id: string, title:string , content:
         //edit request
         axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/editBlog', {title: title , content: editorRef.current.getContent() , id: props.id} )
         .then((res)=>{
-          console.log(res.data);
           window.location.assign('/profile')
         })
         .catch((err)=>{

@@ -3,7 +3,7 @@ import Link from "next/link"
 import DarkMode from '../darkMode';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState , useEffect } from 'react';
-let linkClass = "float-left ml-2 px-3 py-2 btn btn-accent btn-outline btn-sm hover:shadow-md shadow-secondary text-center";
+let linkClass = "ml-2 px-3 py-2 btn btn-accent btn-outline btn-sm hover:shadow-md shadow-secondary text-center";
 export default function NavBar(){
   let [ login , setLogin ] = useState(false);
   useEffect(()=>{
@@ -14,17 +14,14 @@ export default function NavBar(){
   }, [])
   //Default navigation bar, styled with tailwind ( grid )
     return (
-        <div className="col-span-1 fixed rounded-md bg-secondary h-fit mx-auto my-1 pt-2 border-b-1 border-b-primary w-full left-0 -top-1 z-50 bg-opacity-90 shadow-sm shadow-neutral">
+        <div className="flex flex-row col-span-1 fixed rounded-md bg-secondary h-fit mx-auto my-1 pt-2 pb-2 border-b-1 border-b-primary w-full left-0 -top-1 z-50 bg-opacity-90 shadow-sm shadow-neutral">
         <Drawer/>
-        
         {login? 
-        <div className="float-right my-1 mr-2">
-          <div className="xl:mr-101 md:mr-36 lg:mr-80 md:inline-block hidden text-center"><Link className={`${linkClass} mx-auto`} href={'/'}>Logo</Link></div>
-          <div className="tooltip tooltip-bottom tooltip-neutral z-10" data-tip="Create post"> <Link className={linkClass} href={'/upload'}>+</Link></div>
-
-          <div className='inline-block'><Link className={linkClass} href={'/home'}>Home</Link></div>
-          <div className='inline-block'><Link className={linkClass} href={'/profile'}>Profile</Link></div>
-        </div>
+        <>
+          <div className="flex-initial tooltip tooltip-bottom tooltip-neutral inline-block z-10" data-tip="Create post"> <Link className={linkClass} href={'/upload'}>+</Link></div>
+          <div className='flex-initial inline-block'><Link className={linkClass} href={'/home'}>Home</Link></div>
+          <div className='flex-initial inline-block'><Link className={linkClass} href={'/profile'}>Profile</Link></div>
+        </>
         : 
         <Link className='float-right ml-2 px-3 py-2 mr-4 btn btn-accent btn-sm tooltip' href={'/login'}>Creae an account</Link>
         }
@@ -41,10 +38,11 @@ function Drawer(){
     else setLogin(false);
   }, [])
   return(
-    <div className="drawer inline z-20">
+    <div className="drawer inline z-20 ">
       <input id="my-drawer" type="checkbox" className="drawer-toggle hidden" />
         <div className="drawer-content tooltip">
-        <label htmlFor="my-drawer" className="float-left ml-2 px-3 py-2 btn btn-accent btn-outline btn-sm tooltip hover:shadow-md shadow-secondary text-center"><GiHamburgerMenu /></label>
+        <label htmlFor="my-drawer" className="flex-1 float-left ml-2 px-3 py-2 btn btn-accent btn-outline btn-sm tooltip hover:shadow-md shadow-secondary text-center"><GiHamburgerMenu /></label>
+        <div className="flex-1 inline"><Link className={linkClass} href={'/'}>Z-Blog</Link></div>
       </div> 
       <div className="drawer-side">
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -56,7 +54,7 @@ function Drawer(){
           <DarkMode type="b"/>
           {login? <button className="btn btn-error btn-outline btn-sm text-center w-full my-2" onClick={()=>{localStorage.removeItem('user'); window.location.assign('/')}}>Log out</button> : null}
         </ul>
-  </div>
-</div>
+      </div>
+    </div>
   )
 }

@@ -21,11 +21,10 @@ passport.use(
           return cb(null , result.data);
         })  
         .catch((err)=>{
-          console.log(err);
           return cb(err, null);
         })
       } catch (e: any) {
-        console.log(e);
+        window.location.assign('/error');
       }
     }
   )

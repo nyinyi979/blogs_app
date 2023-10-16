@@ -6,6 +6,7 @@ import { MdOutlineWindow } from 'react-icons/md';
 import { BsSquare } from 'react-icons/bs';
 import { useQuery , QueryClientProvider , QueryClient  } from '@tanstack/react-query';
 import { displayMSG } from '../_componenets/pop_ups';
+import Link from 'next/link';
 type prop = {author:{username: string}[] , categories:{name: string}[] , content: string , createdAt: string , id: string , images: {url: string , location: string}[] , title:string , comments: { commentedBy: { name: string }[] , content: string }[] , _count: {reactions: number , comments: number}}[]
 export default function Blog(){
     useEffect(()=>{
@@ -59,13 +60,16 @@ function Blogs(){
             : 
             normalView
             : ""}
+            {data?.length === 0?  <div className='col-span-2 py-52 text-center text-neutral'>No more blogs! You should select mroe categories in your profile setting! <Link href={'/setting/profile'} className='link link-neutral'>Select More!</Link></div> : null}
             {data? 
             <div className='col-span-2'>
                 <button id='loading_div' className='btn btn-secondary btn-sm m-2 w-fit float-right text-right' disabled={take >= count} onClick={()=>{!isFetching? setTake(take+5) : null}}>
                     {take<count? isFetching? <>Loading<span id='loading_bar' className="loading loading-bars loading-sm"></span></> : 'Load more' : 'Nothing more'}
                 </button>
             </div>
-            :null}
+            : 
+            null    
+            }
         </div>
     )
 }

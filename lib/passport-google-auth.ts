@@ -16,7 +16,7 @@ passport.use(
     async (_accessToken, _refreshToken, profile, cb: any) => {
       try {
         //doing the user process in the backend
-        await axios(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/checkGoogleUser',{method:'post', data:profile , withCredentials:true})
+        await axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/checkGoogleUser' , {data:profile})
         .then((result)=>{
           return cb(null , result.data);
         })  

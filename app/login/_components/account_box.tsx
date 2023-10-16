@@ -45,8 +45,9 @@ export function Login(){
             </div> 
             :
             <>
-                <input type="text" className="input input-secondary text-white font-bold text-lg bg-gradient-to-tr from-secondary to-neutral my-2 overflow-hidden caret-transparent focus:to-primary duration-300" style={{backgroundSize: '50px 1px', letterSpacing: '40px',outline:'none', width:'300px'}} maxLength={5} value={code_} onChange={(e)=>{setCode_(e.target.value)}}/> <br />
-                <button className="btn btn-sm btn-accent" onClick={checkCode}>Login</button>
+                <span className="text-neutral my-2 block">We have sent you a code to the gmail! </span>
+                <input type="text" className="input bg-fixed input-secondary text-white font-bold w-full text-lg bg-gradient-to-tr from-secondary to-neutral my-2 overflow-hidden caret-transparent focus:to-primary duration-300" style={{backgroundSize: '50px ', letterSpacing: '40px',outline:'none'}} maxLength={5} value={code_} onChange={(e)=>{setCode_(e.target.value)}}/> <br />
+                <button className="btn btn-sm btn-accent w-full" onClick={checkCode}>Login</button>
             </>
             }
         </div>

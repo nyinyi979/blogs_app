@@ -5,11 +5,16 @@ import { setCookie } from "cookies-next";
 export default async function Callback(req, res , next){
     passport.authenticate('google' , (err , user)=>{
         if(err) return res.redirect('/error');
-        setCookie('user' , user , {
+        setCookie('user' , user.token , {
             httpOnly: true,
             maxAge: 24*60*60,
             sameSite: 'lax', req, res
-        })
+        });
+        setCookie('new' , user.new , {
+            httpOnly: true,
+            maxAge: 24*60*60,
+            sameSite: 'lax', req, res
+        });
         return res.redirect('/process');
     })(req , res , next)
 }

@@ -11,7 +11,7 @@ export default function Bloggers(){
     let cards = "card w-1/2 bg-gradient-to-br from-primary to-secondary shadow-xl scale-95 border-neutral border-2 hover:blur-0 hover:z-20 hover:scale-100 hover:opacity-100 hover:border-primary duration-300";
 return(
     <div className="col-span-1 mt-16 h-fit w-full lg:bg-primary">  
-        <div className='pt-4 pb-12 h-fit bg-primary rounded-md md:h-32 lg:float-left lg:w-1/2 lg:h-fit lg:pb-32 lg:pl-24 lg:pt-20 border-2 border-secondary hover:border-gray-400 duration-500'>
+        <div className='pt-4 pb-12 h-fit bg-primary rounded-md md:h-32 lg:float-left lg:w-1/2 lg:h-fit lg:pb-32 lg:pl-24 lg:pt-20 border-2 border-secondary hover:border-neutral duration-500'>
             <div className="md:float-left lg:float-none">
                 <h1 className='text-xl py-2 pl-2 text-neutral'>Blogging website</h1>
                 <div className="container pl-2">

@@ -2,7 +2,7 @@ import Link from "next/link"
 export default function Footer(){
     return (
     //FOOTER , styled with tailwind ( grid )
-    <div className="col-span-1 border-t-2 p-4 mb-3 mt-4 h-60 md:h-52 MD:text-sm text-xs border-neutral w-full lg:text-md rounded-md bg-gradient-to-br from-primary to-secondary">
+    <div className="col-span-1 border-t-2 p-4 mb-3 mt-4 h-60 md:h-52 md:text-sm text-xs border-neutral w-full lg:text-md rounded-md bg-gradient-to-br from-primary to-secondary">
         <div className='py-2 float-left'>
             <div className="py-2 md:float-left md:px-1 lg:px-10 xl:px-20">
                 <h1 className="text-neutral underline">About Us</h1>

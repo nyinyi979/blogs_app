@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import Bloggers from './home/home_components/bloggers';
-import Blogs from './home/home_components/blogs';
+import Bloggers from './_componenets/home_components/bloggers';
+import Blogs from './_componenets/home_components/blogs';
 export const metadata: Metadata = {
   title: "Main" 
 }

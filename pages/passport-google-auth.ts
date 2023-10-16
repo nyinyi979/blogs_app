@@ -3,7 +3,6 @@
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import passport from "passport";
 import axios from "axios";
-import {cookies} from 'next/headers';
 
 
 passport.use(

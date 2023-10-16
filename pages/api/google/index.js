@@ -1,4 +1,4 @@
-import passport from "@/lib/passport-google-auth"; 
+import passport from "@/pages/passport-google-auth"; 
 
 //authentication is done here
 //when the route /api/google is called, this functioin will be called

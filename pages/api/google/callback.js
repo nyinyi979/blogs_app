@@ -1,5 +1,5 @@
 "use server"
-import passport from "@/lib/passport-google-auth"; 
+import passport from "@/pages/passport-google-auth"; 
 import { setCookie } from "cookies-next";
 //Callback after being authentication
 export default async function Callback(req, res , next){

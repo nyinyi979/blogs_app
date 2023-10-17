@@ -3,7 +3,9 @@ import { BiCommentDetail } from 'react-icons/bi';
 export default function Blogs(){
 
     //Example blogs in base route, all are styled with tailwind
-    let cards = "card w-1/2 bg-gradient-to-br from-primary to-secondary shadow-xl border-neutral border-2 text-xs md:text-sm scale-100 hover:opacity-100 hover:scale-105 hover:z-20 duration-300 hover:border-gray-400 hover:blur-0";
+
+    let cards = "card md:w-1/2 w-5/12 bg-gradient-to-br from-primary to-secondary shadow-xl border-neutral border-2 text-xs md:text-sm scale-100 hover:opacity-100 hover:scale-105 hover:z-20 duration-300 hover:border-gray-400 hover:blur-0";
+
     return (
     <div className="col-span-1 pb-8 mt-2 h-fit w-full rounded-md bg-gradient-to-br from-primary to-secondary">
         <h1 className='text-center pb-2 text-neutral hover:text-white duration-300' style={{fontSize:'1.5em'}}>Blogs</h1>
@@ -15,8 +17,8 @@ export default function Blogs(){
                     <p className='text-neutral'><span>Author-  </span>James</p>
                     <p className='text-neutral'><span>Posted-  </span>31/9/2023</p>
                     <div className="card-actions justify-end">
-                        <span className="btn btn-sm btn-primary"><AiOutlineLike /> 15</span>
-                        <span className="btn btn-sm btn-primary"><BiCommentDetail /> 20</span>
+                        <span className="btn md:btn-sm btn-xs btn-primary"><AiOutlineLike /> 15</span>
+                        <span className="btn md:btn-sm btn-xs btn-primary"><BiCommentDetail /> 20</span>
                     </div>
                 </div>
             </div>
@@ -27,8 +29,8 @@ export default function Blogs(){
                     <p className='text-neutral'><span>Author-  </span>John</p>
                     <p className='text-neutral'><span>Posted-  </span>8/8/2023</p>
                     <div className="card-actions justify-end">
-                        <span className="btn btn-sm btn-primary"><AiOutlineLike /> 35</span>
-                        <span className="btn btn-sm btn-primary"><BiCommentDetail /> 10</span>
+                        <span className="btn md:btn-sm btn-xs btn-primary"><AiOutlineLike /> 35</span>
+                        <span className="btn md:btn-sm btn-xs btn-primary"><BiCommentDetail /> 10</span>
                     </div>
                 </div>
             </div>

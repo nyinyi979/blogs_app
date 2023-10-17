@@ -14,7 +14,7 @@ export default function NavBar(){
   }, [])
   //Default navigation bar, styled with tailwind ( grid )
     return (
-        <div className="flex flex-row col-span-1 fixed rounded-md bg-secondary h-fit mx-auto my-1 pt-2 pb-2 border-b-1 border-b-primary w-full left-0 -top-1 z-50 bg-opacity-90 shadow-sm shadow-neutral">
+        <div className="flex flex-row col-span-1 fixed rounded-md bg-secondary h-fit mx-auto my-1 p-2 border-b-1 border-b-primary w-full left-0 -top-1 z-50 bg-opacity-90 shadow-sm shadow-neutral">
         <Drawer/>
         {login? 
         <>

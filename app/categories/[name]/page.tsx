@@ -5,8 +5,6 @@ import { GetBlogsUI , GetBlog , GetGrid } from '@/app/_componenets/dynamic_compo
 import { MdOutlineWindow } from 'react-icons/md';
 import { BsSquare } from 'react-icons/bs';
 import { useQuery , QueryClientProvider , QueryClient  } from '@tanstack/react-query';
-let blogs: React.JSX.Element|React.JSX.Element[] = [];
-let gridBlog: React.JSX.Element|React.JSX.Element[] = [];
 type prop = {author:{username: string}[] , categories:{name: string}[] , content: string , createdAt: string , id: string , images: {url: string , location: string}[] , title:string , comments: { commentedBy: { name: string }[] , content: string }[] , _count: {reactions: number , comments: number}}[]
 export default function Blog({params}: {params: {name: string}}){
     const [queryClient] = useState(() => new QueryClient());

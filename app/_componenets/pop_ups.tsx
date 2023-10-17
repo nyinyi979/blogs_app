@@ -4,7 +4,7 @@ import {FaTrashAlt} from 'react-icons/fa';
 //For publishing and unpublishing
 export default function MsgBox(){
     return(
-        <div className='alert hidden fixed bottom-10 z-20 w-1/2 ml-32 md:ml-48 lg:ml-80' id="msg_box"></div> 
+        <div className='alert hidden fixed bottom-10 z-20 w-1/2 ml-28 md:ml-48 lg:ml-80' id="msg_box"></div> 
     )
 }
 export function displayMSG(type: 'e'|'s' , info: string){

@@ -121,7 +121,8 @@ function NameBox(props: {name: string , id:string}){
         .then((res)=>{
             displayMSG('s' , 'Successfully changed name!');
             setDisabled(true);
-        })
+            old_value = name;    
+})
         .catch(()=>{
             displayMSG('e' , 'Something went wrong!');
             setDisabled(true);
@@ -196,6 +197,7 @@ function PhoneBox(props: {phone: string , id:string}){
         .then((res)=>{
             displayMSG('s' , 'Successfully changed name!');
             setDisabled(true);
+            old_value = phone;
         })
         .catch(()=>{
             displayMSG('e' , 'Something went wrong!');
@@ -230,6 +232,7 @@ function EmailBox(props: {email: string , id:string}){
         .then((res)=>{
             displayMSG('s' , 'Successfully changed name!');
             setDisabled(true);
+            old_value = email;
         })
         .catch(()=>{
             displayMSG('e' , 'Something went wrong!');
@@ -290,7 +293,7 @@ function CategoriesBox(props: {a_categories:{name: string}[] , i_categories:{nam
                 return <button className="btn md:btn-sm btn-xs btn-outline btn-neutral ml-1 mt-1" key={i}>{val.name}</button>
             })}
             <div className="m-1">
-                <select name="cat" id="cat" className="select select-primary select-sm text-neutral">
+                <select ref={select} name="cat" id="cat" className="select select-primary select-sm text-neutral">
                     {i_categories.map((val)=>{
                         return <option value={val.name} key={val.name} disabled={val.name === 'SAMPLE'}>
                             {val.name}

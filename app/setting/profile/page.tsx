@@ -150,6 +150,7 @@ function NameBox(props: {name: string , id:string}){
 }
 function UsernameBox(props: {username: string , id:string}){
     let old_value = props.username;
+    let pattern = /['":;{}()\/\]\[ ]/g;
     let [ username , setUsername ] = useState(props.username);
     let [ disabled , setDisabled ] = useState(true);
     function updateUsername(id: string){
@@ -158,10 +159,15 @@ function UsernameBox(props: {username: string , id:string}){
             displayMSG('e' , 'Same as the old one :)');
             return;
         }
+        if(username.match(pattern)){
+            document.getElementById('err')!.innerText = `. , { , } , : , ; , ' , " , [ , ] , space must not be in the input box. Use _ instead of space!!`
+            return;
+        }
         axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/updateUsername' , {id: props.id , username: username})
         .then((res)=>{
             displayMSG('s' , 'Successfully changed name!');
             setDisabled(true);
+            old_value = username;
         })
         .catch(()=>{
             displayMSG('e' , 'Something went wrong!');
@@ -177,6 +183,7 @@ function UsernameBox(props: {username: string , id:string}){
             <>
                 <span className="btn btn-xs mx-1 btn-primary rounded-none" onClick={()=>{updateUsername(props.id)}}><TiTickOutline className="inline"/></span>
                 <span className="btn btn-xs mx-1 btn-primary rounded-none" onClick={()=>{setDisabled(true); setUsername(old_value)}}><ImCross className="inline"/></span>
+                <span id="err" className="text-sm text-error block"></span>
             </>
             }
         </>

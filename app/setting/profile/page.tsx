@@ -18,7 +18,7 @@ export default function Setting(){
             } , 3000)
         }
     } , [])
-    let userID = '84b96e2e-fffe-4e06-9ade-450d9e30ac0e';
+    let [ userID , setUserID ] = useState('');
     let [ loading , setLoading ] = useState(false);
     let [ error , setError ] = useState(false);
     let [ result , setResult ] = useState<prop|undefined>(undefined);
@@ -41,7 +41,7 @@ export default function Setting(){
             setUsername(res.data.username);
             setEmail(res.data.email);
             setPhone(res.data.phone);
-
+            setUserID(res.data.id);
             setICategories(res.data.categories_);
             setACategories(res.data.categories)
             let newArray:string[] = [];

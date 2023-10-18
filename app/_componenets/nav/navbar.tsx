@@ -48,7 +48,15 @@ function Drawer(){
         <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 text-neutal bg-secondary mt-1 rounded-md shadow-sm shadow-neutral border-2 border-neutral" style={{height:'99%'}}>
         {/* Sidebar content here */}
-        {login? <Link className='btn btn-accent btn-outline btn-sm text-center w-full my-2' href={'/setting'}>Setting</Link> : null }
+        {login? <Link className='btn btn-accent btn-outline btn-sm text-center w-full my-2 hidden md:inline-flex' href={'/setting'}>Setting</Link> : null }
+        {login? 
+        <div className="dropdown dropdown-end">
+        <label tabIndex={0} className="btn btn-accent btn-outline btn-sm text-center w-full my-2 inline-flex md:hidden">Setting</label>
+        <ul tabIndex={0} className="dropdown-content z-[1] rounded-box w-fit bg-primary">
+          <Link href={'/setting/profile'} className="btn btn-accent btn-sm w-full btn-outline rounded-none" id="profile">Profile</Link>
+          <Link href={'/setting/notification'} className="btn btn-accent btn-sm w-full btn-outline rounded-none" id="setting">Notification & Others</Link>
+        </ul>
+        </div> : null}
           <Link className='btn btn-accent btn-outline btn-sm text-center w-full my-2' href={'/about'}>About us</Link>
           <Link className='btn btn-accent btn-outline btn-sm text-center w-full my-2' href={'/getting_started'}>Getting started?</Link>
           <DarkMode type="b"/>

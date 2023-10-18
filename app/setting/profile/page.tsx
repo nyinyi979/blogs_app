@@ -95,7 +95,7 @@ export default function Setting(){
                 <tr className="shadow-md shadow-primary">
                     <td className="border-r-2 border-secondary text-neutral">Categories that you love to see!</td>
                     <td>
-                        <CategoriesBox a_categories={a_categories} i_categories={i_categories} id={result.id}/>
+                        <CategoriesBox a_categories={a_categories} i_categories={i_categories} id={userID}/>
                     </td>
                 </tr>
                 </tbody>

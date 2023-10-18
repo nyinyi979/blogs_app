@@ -103,7 +103,8 @@ export function GetMainUI(){
 //Sidebar contents and loading UI 
 export function GetSideContent(props:props){
     let arr: React.JSX.Element[] = [];
-    for(var i = 0; i<10; i++){
+    console.log(props.length)
+    for(var i = 0; i<props.length; i++){
         let img_id = 'img' + i;
         let carousel_item = "carousel-item w-full cursor-pointer rounded-sm mx-auto md:mt-0 max-md:mx-3 max-md:pt-2 max-md:hover:bg-secondary md:p-2 hover:bg-primary duration-300";
         if(i>6){
@@ -209,11 +210,11 @@ export function GetBottomUI(){
             <div className="md:block hidden col-span-1 row-span-1 mt-2 p-4" key={i}>
                 <div className="grid grid-cols-3 w-full gap-1 p-2">
                     <h1 className="col-span-2 rounded-md text-left w-3/4 h-4 bg-secondary"></h1>
-                    <h2 className="col-span-1 rounded-md float-left text-neutral w-full h-4 bg-secondary"></h2>
+                    <h2 className="col-span-1 rounded-md float-left mr-2 text-neutral w-full h-4 bg-secondary"></h2>
                     <div className="col-span-1 rounded-md h-36 bg-secondary p-3 mt-3"> </div>
                     <div className="col-span-2 h-36 p-2"> 
                         <div className="w-full h-4 rounded-md bg-secondary m-2"></div>
-                        <div className="w-1/2 h-4 rounded-md ml-52 bg-secondary m-2 md:ml-24 lg:ml-36"></div>
+                        <div className="w-1/2 h-4 rounded-md bg-secondary m-2 md:ml-24 lg:ml-36"></div>
                         <div className="w-full h-4 rounded-md bg-secondary m-2"></div>
                         <div className="w-1/2 h-4 rounded-md bg-secondary m-2 md:ml-20"></div>
                         <div className="w-full h-4 rounded-md bg-secondary m-2"></div>

@@ -31,7 +31,7 @@ export function GetBlogsUI(){
                     <span className="inline-flex w-1/4 px-12 h-4 m-2 bg-secondary"></span>
                     <span className="inline-flex w-1/4 px-12 h-4 m-2 bg-secondary"></span>
                 </div>
-                <div className="col-span-1 w-1/2 lg:ml-32 ml-16 h-4 bg-secondary"></div>
+                <div className="col-span-1 w-1/2 lg:ml-32 md:ml-16 ml-10 h-4 bg-secondary"></div>
             </div>
         )
     }

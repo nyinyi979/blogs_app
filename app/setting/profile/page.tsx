@@ -72,7 +72,7 @@ export default function Setting(){
             <div className="md:col-span-2 col-span-3 bg-secondary w-full p-3 text-neutral">
             {loading? null : error? "ERROR" : result?   
             <div>
-                <table className="table rounded-none">
+                <table className="table rounded-none table-sm md:table-md">
                     <tbody className="bg-secondary">
                     <tr className="shadow-md shadow-primary">
                         <td className="border-r-2 border-secondary text-neutral">Name</td>

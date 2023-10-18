@@ -64,6 +64,10 @@ export function Signup(){
     let [ username , setUsername ] = useState('');
     let [ phone , setPhone ] = useState('');
     function fetchCode(){
+        if(gmail === ''){
+            document.getElementById('gmail')!.focus();
+            return;
+        }
         axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/getCodeS', {mail: gmail})
         .then((res)=>{
             if(res.data.notFound) {

@@ -37,7 +37,6 @@ function Blogs(){
         keepPreviousData: true,
         retry: 2
     });
-    console.log(data)
     let gridView = data?.map((val, i) => (
         GetGrid(val)
     ));

@@ -18,17 +18,21 @@ import edit_d1 from '@/app/_componenets/img/edit_d1.png';
 import edit_d2 from '@/app/_componenets/img/edit_d2.png';
 import edit_d3 from '@/app/_componenets/img/edit_d3.png';
 import {useState , useEffect} from 'react';
+
 export default function GettingStarted(){
     let [ dark , setDark ] = useState(true);
-    let [ update , setUpdate ] = useState(true)
     useEffect(()=>{
-        let value = localStorage.darkMode; 
-        if(value === 'dark') setDark(true);
-        else setDark(false);
-        setUpdate(!update);
-    } , [update])
+        const themeCheck = () => {
+            if (localStorage.darkMode === "dark") {
+              setDark(true);
+            } else {
+              setDark(false);
+            }
+          } 
+        themeCheck();
+    } , [dark])
     return(
-        <div className="scroll-smooth text-neutral bg-secondary text-lg mt-16 w-11/12 rounded-md mx-auto leading-8 border-2 border-neutral-focus">
+        <div className="scroll-smooth text-neutral bg-secondary md:text-lg mt-16 w-11/12 rounded-md mx-auto leading-8 border-2 border-neutral-focus">
             <div className="w-2/3 mx-auto p-2">
                 
                 Name , username , email( gmail ) , ph<h1 className="font-bold">User info!</h1>one number can be edited from <Link className="link link-neutral hover:underline" href={'/setting/profile'}>Setting &gt; Profile</Link> 

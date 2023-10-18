@@ -65,11 +65,11 @@ export default function Setting(){
     return (
         <div className="grid grid-cols-3 w-11/12 mx-auto border-2 border-primary mt-16">
             
-            <div className="col-span-1 border-r-2 border-primary bg-secondary">
-                <Link href={'/setting/profile'} className="btn btn-neutral w-full rounded-none" id="profile">Profile</Link>
+            <div className="col-span-1 border-r-2 border-primary bg-secondary hidden md:block">
+                <Link href={'/setting/profile'} className="btn btn-neutral w-full btn-outline rounded-none" id="profile">Profile</Link>
                 <Link href={'/setting/notification'} className="btn btn-neutral w-full btn-outline rounded-none" id="setting">Notification & Others</Link>
             </div>
-        <div className="w-full col-span-2">
+            <div className="md:col-span-2 col-span-3 bg-secondary w-full p-3 text-neutral">
             {loading? null : error? "ERROR" : result?   
             <div>
                 <table className="table rounded-none">

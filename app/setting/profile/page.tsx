@@ -63,53 +63,46 @@ export default function Setting(){
         })
     }, [userID ])
     return (
-        <div className="grid grid-cols-3 w-11/12 mx-auto border-2 border-primary mt-16">
-            
-            <div className="col-span-1 border-r-2 border-primary bg-secondary hidden md:block">
-                <Link href={'/setting/profile'} className="btn btn-neutral w-full btn-outline rounded-none" id="profile">Profile</Link>
-                <Link href={'/setting/notification'} className="btn btn-neutral w-full btn-outline rounded-none" id="setting">Notification & Others</Link>
-            </div>
-            <div className="md:col-span-2 col-span-3 bg-secondary w-full p-3 text-neutral">
-            {loading? null : error? "ERROR" : result?   
-            <div>
-                <table className="table rounded-none table-sm md:table-md">
-                    <tbody className="bg-secondary">
-                    <tr className="shadow-md shadow-primary">
-                        <td className="border-r-2 border-secondary text-neutral">Name</td>
-                        <td><NameBox id={userID} name={name_}/></td>
-                    </tr>
-                    <tr className="shadow-md shadow-primary">
-                        <td className="border-r-2 border-secondary text-neutral">Username </td>
-                        <td><UsernameBox id={userID} username={username}/></td>
-                    </tr>
-                    <tr className="shadow-md shadow-primary">
-                        <td className="border-r-2 border-secondary text-neutral">Email</td>
-                        <td><EmailBox id={userID} email={email}/></td>
-                    </tr>
-                    <tr className="shadow-md shadow-primary">
-                        <td className="border-r-2 border-secondary text-neutral">Phone number </td>
-                        <td><PhoneBox id={userID} phone={phone}/></td>
-                    </tr>
-                    <tr className="shadow-md shadow-primary">
-                        <td className="border-r-2 border-secondary text-neutral">Categories that you have uploaded</td>
-                        <td>
-                            {categories.map((val , i)=>{
-                                return <button className="btn btn-sm btn-outline btn-neutral ml-1 mt-1" key={i}>{val}</button>
-                            })}
-                        </td>
-                    </tr>
-                    <tr className="shadow-md shadow-primary">
-                        <td className="border-r-2 border-secondary text-neutral">Categories that you love to see!</td>
-                        <td>
-                            <CategoriesBox a_categories={a_categories} i_categories={i_categories} id={result.id}/>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            : null
-            }
+        <div className="md:col-span-2 col-span-3 bg-secondary w-full p-3 text-neutral">
+        {loading? null : error? "ERROR" : result?   
+        <div>
+            <table className="table rounded-none table-sm md:table-md">
+                <tbody className="bg-secondary">
+                <tr className="shadow-md shadow-primary">
+                    <td className="border-r-2 border-secondary text-neutral">Name</td>
+                    <td><NameBox id={userID} name={name_}/></td>
+                </tr>
+                <tr className="shadow-md shadow-primary">
+                    <td className="border-r-2 border-secondary text-neutral">Username </td>
+                    <td><UsernameBox id={userID} username={username}/></td>
+                </tr>
+                <tr className="shadow-md shadow-primary">
+                    <td className="border-r-2 border-secondary text-neutral">Email</td>
+                    <td><EmailBox id={userID} email={email}/></td>
+                </tr>
+                <tr className="shadow-md shadow-primary">
+                    <td className="border-r-2 border-secondary text-neutral">Phone number </td>
+                    <td><PhoneBox id={userID} phone={phone}/></td>
+                </tr>
+                <tr className="shadow-md shadow-primary">
+                    <td className="border-r-2 border-secondary text-neutral">Categories that you have uploaded</td>
+                    <td>
+                        {categories.map((val , i)=>{
+                            return <button className="btn btn-sm btn-outline btn-neutral ml-1 mt-1" key={i}>{val}</button>
+                        })}
+                    </td>
+                </tr>
+                <tr className="shadow-md shadow-primary">
+                    <td className="border-r-2 border-secondary text-neutral">Categories that you love to see!</td>
+                    <td>
+                        <CategoriesBox a_categories={a_categories} i_categories={i_categories} id={result.id}/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
+        : null
+        }
         </div>
     )
 }
@@ -294,12 +287,12 @@ function CategoriesBox(props: {a_categories:{name: string}[] , i_categories:{nam
     return(
         <div>
             {a_categories.map((val , i)=>{
-                return <button className="btn btn-sm btn-outline btn-neutral ml-1 mt-1" key={i}>{val.name}</button>
+                return <button className="btn md:btn-sm btn-xs btn-outline btn-neutral ml-1 mt-1" key={i}>{val.name}</button>
             })}
             <div className="m-1">
-                <select name="cat" id="cat" className="select select-primary select-sm text-neutral" ref={select}>
+                <select name="cat" id="cat" className="select select-primary select-sm text-neutral">
                     {i_categories.map((val)=>{
-                        return <option value={val.name} key={val.name} selected={val.name === 'SAMPLE'}>
+                        return <option value={val.name} key={val.name} disabled={val.name === 'SAMPLE'}>
                             {val.name}
                         </option>
                     })}

@@ -103,7 +103,6 @@ export function GetMainUI(){
 //Sidebar contents and loading UI 
 export function GetSideContent(props:props){
     let arr: React.JSX.Element[] = [];
-    console.log(props.length)
     for(var i = 0; i<props.length; i++){
         let img_id = 'img' + i;
         let carousel_item = "carousel-item w-full cursor-pointer rounded-sm mx-auto md:mt-0 max-md:mx-3 max-md:pt-2 max-md:hover:bg-secondary md:p-2 hover:bg-primary duration-300";

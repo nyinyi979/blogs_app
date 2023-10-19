@@ -15,6 +15,7 @@ export default function LoginPage() {
       {login? 
       <button className="btn btn-accent btn-outline my-2 btn-sm w-full" onClick={()=>{setLogin(false)}}>Sign up</button> :
       <button className="btn btn-accent btn-outline my-2 btn-sm w-full" onClick={()=>{setLogin(true)}}>Login</button> }
+      <Link href={'/api/google'} className="btn btn-error btn-outline my-2 btn-sm w-full">Login with Google <BsGoogle cassName="inline mx-2"/></Link>
     </div>
   );
 };

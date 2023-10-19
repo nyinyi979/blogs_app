@@ -2,7 +2,6 @@ import { displayMSG } from "@/app/_componenets/pop_ups";
 import axios from "axios";
 import { useState } from "react"
 
-
 export function Login(){
     let [ gmail , setGmail ] = useState('');
     let [ code , setCode ] = useState('');
@@ -40,13 +39,13 @@ export function Login(){
             {code===''? 
             <div>
                 <span className="text-neutral my-2 block">Login: Enter your gmail!</span>
-                <input type="email" className="input input-secondary input-md text-neutral w-full" placeholder="someone@gmail.com" name="gmail" id="gmail" value={gmail} size={30} onChange={(e)=>{setGmail(e.target.value)}} required/> <br />
+                <input type="email" className="input input-secondary input-md text-neutral w-full my-2" placeholder="someone@gmail.com" name="gmail" id="gmail" value={gmail} size={30} onChange={(e)=>{setGmail(e.target.value)}} required/> <br />
                 <button type="submit" className="btn btn-sm btn-accent my-2 w-full" onClick={fetchCode}>Send a code!</button> <br />
             </div> 
             :
             <>
                 <span className="text-neutral my-2 block">We have sent you a code to the gmail! </span>
-                <input type="text" className="input bg-fixed input-secondary text-white font-bold w-full text-lg bg-gradient-to-tr from-secondary to-neutral my-2 overflow-hidden caret-transparent focus:to-primary duration-300" style={{backgroundSize: '50px ', letterSpacing: '40px',outline:'none'}} maxLength={5} value={code_} onChange={(e)=>{setCode_(e.target.value)}}/> <br />
+                <input type="text" className="input bg-fixed input-secondary text-white font-bold w-full text-lg bg-neutral my-2 overflow-hidden caret-transparent duration-300" style={{backgroundSize: '2.79em', letterSpacing: '1.8em',outline:'none',fontFamily: "Courier New"}} maxLength={5} value={code_} onChange={(e)=>{setCode_(e.target.value)}}/> <br />
                 <button className="btn btn-sm btn-accent w-full" onClick={checkCode}>Login</button>
             </>
             }
@@ -137,13 +136,13 @@ export function Signup(){
             code===''? 
             <>
                 <span className="text-neutral my-2 block">Sign up: Enter your gmail!</span>
-                <input type="email" className="input input-secondary input-md text-neutral w-full" placeholder="someone@gmail.com" name="gmail" id="gmail" value={gmail} size={30} onChange={(e)=>{setGmail(e.target.value)}}/> <br />
+                <input type="email" className="input input-secondary input-md text-neutral w-full my-2" placeholder="someone@gmail.com" name="gmail" id="gmail" value={gmail} size={30} onChange={(e)=>{setGmail(e.target.value)}}/> <br />
                 <button className="btn btn-sm btn-accent w-full" type="submit" onClick={fetchCode}>Sign up!</button> <br />
             </> 
             :
             <>
                 <span className="text-neutral my-2 block">We have sent you a code to the gmail! </span>
-                <input type="text" className="input input-secondary text-white font-bold w-full text-lg bg-gradient-to-tr from-secondary to-neutral my-2 overflow-hidden caret-transparent focus:to-primary duration-300" style={{backgroundSize: '50px 1px', letterSpacing: '40px',outline:'none'}} maxLength={5} value={code_} onChange={(e)=>{setCode_(e.target.value)}}/> <br />
+                <input type="text" className="input bg-fixed input-secondary text-white font-bold w-full text-lg bg-neutral my-2 overflow-hidden caret-transparent duration-300" style={{backgroundSize: '2.79em', letterSpacing: '1.8em',outline:'none',fontFamily: "Courier New"}} maxLength={5} value={code_} onChange={(e)=>{setCode_(e.target.value)}}/> <br />
                 <button className="btn btn-sm btn-accent w-full" onClick={checkCode}>Signup!</button>
             </>
             }

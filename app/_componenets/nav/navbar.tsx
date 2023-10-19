@@ -18,16 +18,13 @@ export default function NavBar(){
     else setLogin(false);
   }, [])
   useEffect(()=>{
-    let db = setInterval(()=>{
       if(path !== null) {
         if(document.getElementById(path) !== null){
           document.getElementById(path)!.classList.remove('btn-outline');
           document.getElementById(old)!.classList.add('btn-outline');
           old = path;
-          clearInterval(db);
         }
       }
-    } , 1000)
   } , [path])
   //Default navigation bar, styled with tailwind ( grid )
     return (

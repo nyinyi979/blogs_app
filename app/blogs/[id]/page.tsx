@@ -19,7 +19,6 @@ export  default function HomePage({params}: {params: {id: string}}){
             setError(true);
         })
         axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/blogsByCategories',{params: {id: localStorage.user ,'t':11,'s':0}}).then((res)=>{
-            console.log(res.data)
             let main_blog_removed = res.data.result.filter((item) => item.id !== params.id);
             side_result = GetSideContent(main_blog_removed );
             bottom_result = GetBottomContents(main_blog_removed);

@@ -33,7 +33,7 @@ function Blogs(){
         queryFn: ()=> axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL +'/blogsByCategories', {params: {id:localStorage.user, t:take , s:0}})
         .then((res)=>{ setCount(res.data.count); return res.data.result;  }) 
         .catch((err)=>{ return new Error("Server error occurred")}),
-        queryKey: ["blogsByCategories" , take] , 
+        queryKey: [take] , 
         keepPreviousData: true,
         retry: 2
     });

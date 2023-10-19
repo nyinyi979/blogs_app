@@ -25,7 +25,6 @@ type props = prop[]
 //this is user prop returned from the server, since i didn't want to make a fetch reqest again, i included in /blogsByUserID request
 type Uprop = {name: string, username: string, email: string, phone: string, posts: {categories: {name: string}[]}[], _count: {posts: number}, profile:{url: string}}
 
-let userID = '';
 function User(){
     let [ take , setTake ] = useState(10);
     let [ count , setCount ] = useState(0);
@@ -63,7 +62,7 @@ function User(){
     )
 }
 
-//GET webpages in profile 
+//GET blogs in profile 
 export function GetBlogProfile(props: {val: prop}){
     let parentP_class = "grid grid-cols-2 z-10 md:grid-cols-3 col-span-2 gap-1 p-4 m-2 bg-gradient-to-tr from-primary to-secondary rounded-md lg:text-lg text-md scale-95 border-2 border-neutral-content hover:border-neutral hover:text-white duration-300 cursor-pointer";
     let parentU_class = "grid grid-cols-2 z-10 md:grid-cols-3 col-span-2 gap-1 p-4 m-2 bg-gradient-to-tr from-primary to-neutral-content rounded-md lg:text-lg text-md scale-95 border-2 border-neutral-content hover:border-neutral duration-300 cursor-pointer";

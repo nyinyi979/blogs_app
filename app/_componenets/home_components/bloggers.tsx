@@ -29,6 +29,7 @@ return(
                 </p>
             </div>
             <div className="pt-3 md:pt-0 md:float-right md:pr-20 lg:mt-10 lg:float-none lg:mx-auto lg:w-full lg:pr-0">
+              {/* if the user is logged in , it will tell to start creating or reading blogs! */}
               {login? 
               <>
                 <div className="float-left md:ml-4">
@@ -55,7 +56,7 @@ return(
             </div>      
         </div>
         
-
+        {/* These Profiles are just to show */}
         <div className='mt-2 pb-12 h-fit w-full z-10 rounded-md bg-gradient-to-br from-primary to-secondary lg:float-left lg:bg-none lg:w-1/2'>
           <h1 className='pt-4 w-full text-center text-neutral hover:text-white duration-300' style={{fontSize:'1.5rem'}}>Bloggers</h1>
           <div className="stack items-center md:ml-24 lg:ml-0">

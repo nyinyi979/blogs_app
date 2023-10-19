@@ -5,6 +5,7 @@ import Text_EditorP from "../../_components/text_editor_profile";
 import Img_upload from "@/app/profile/_components/img_upload";
 
 type prop = {author:{name: string}[] , categories:{name: string}[] , content: string , createdAt: string , id: string , images: {url: string , location: string}[] , title:string , comments: { commentedBy: { name: string }[] , content: string }[] , _count: {reactions: number , comments: number} , published: boolean , modifiedAt: string}
+//Loading UI for edit/blogs_id page
 function LoadingUI(){
     let sample_img = [1, 2 ,3];
     return(

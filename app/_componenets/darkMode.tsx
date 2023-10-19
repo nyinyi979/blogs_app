@@ -30,7 +30,7 @@ export default function DarkMode(prop: {type: string}){
     else return ( <ThemeButon darkMode={darkMode} setDarkMode={setDarkMode}/>)
 }
 export function ThemeToggle({ darkMode, setDarkMode }) {
-    // called when theme button is pressed
+    // called when checkbox is checked or unchecked
   const toggleTheme = () => {
     const theme = localStorage.getItem("darkMode");
     if (theme) {

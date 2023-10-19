@@ -6,6 +6,7 @@ import { MdOutlineWindow } from 'react-icons/md';
 import { BsSquare } from 'react-icons/bs';
 import { useQuery , QueryClientProvider , QueryClient  } from '@tanstack/react-query';
 type prop = {author:{username: string}[] , categories:{name: string}[] , content: string , createdAt: string , id: string , images: {url: string , location: string}[] , title:string , comments: { commentedBy: { name: string }[] , content: string }[] , _count: {reactions: number , comments: number}}[]
+//To get each category, dynamic site
 export default function Blog({params}: {params: {name: string}}){
     const [queryClient] = useState(() => new QueryClient());
     return(
@@ -32,6 +33,7 @@ function Categories(props: {name:string}){
         GetBlog(val)
     ));
     return(
+        // Loading , data , error are defined for better UX
         <div className="grid grid-cols-2 mt-16">
             {isLoading? <GetBlogsUI /> : null}
             {data? 

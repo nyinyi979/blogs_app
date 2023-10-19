@@ -1,7 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react"
 let uploaded_categories:string[] = [];
 type prop = {name: string, username: string, email: string, phone: string, posts: {categories: {name: string}[]}[], _count: {posts: number}, profile:{url: string}}
+//IT IS USERBOX , parameters are passed from profile page
 export default function UserBox(props: {prop: prop}){
     //adding categories
     props.prop.posts.map((val)=>{
@@ -9,6 +8,7 @@ export default function UserBox(props: {prop: prop}){
             uploaded_categories.push(value.name);
         })
     });
+    //to filter duplicated values
     uploaded_categories = [...new Set(uploaded_categories)];
     return(
         <div>

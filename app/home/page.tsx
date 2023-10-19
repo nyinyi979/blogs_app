@@ -8,6 +8,7 @@ import { useQuery , QueryClientProvider , QueryClient  } from '@tanstack/react-q
 import { displayMSG } from '../_componenets/pop_ups';
 import Link from 'next/link';
 type prop = {author:{username: string}[] , categories:{name: string}[] , content: string , createdAt: string , id: string , images: {url: string , location: string}[] , title:string , comments: { commentedBy: { name: string }[] , content: string }[] , _count: {reactions: number , comments: number}}[]
+//This is also similar to categories/name , the data is fetched according to user selected categories
 export default function Blog(){
     useEffect(()=>{
         if(localStorage.user && localStorage.user !=='undefined') return;

@@ -6,7 +6,7 @@ import { MdOutlineWindow } from 'react-icons/md';
 import { BsSquare } from 'react-icons/bs';
 import { useQuery , QueryClientProvider , QueryClient  } from '@tanstack/react-query';
 type prop = {author:{username: string}[] , categories:{name: string}[] , content: string , createdAt: string , id: string , images: {url: string , location: string}[] , title:string , comments: { commentedBy: { name: string }[] , content: string }[] , _count: {reactions: number , comments: number}}[]
-
+//This is the same as categories/name , also a dynamic website 
 export default function Blog({params}: {params: {date: string}}){
     const [queryClient] = useState(() => new QueryClient());
     return(

@@ -8,7 +8,7 @@ export default function Blogs(){
 
     return (
     <div className="col-span-1 pb-8 mt-2 h-fit w-full rounded-md bg-gradient-to-br from-primary to-secondary">
-        <h1 className='text-center pb-2 text-neutral hover:text-white duration-300' style={{fontSize:'1.5em'}}>Blogs</h1>
+        <h1 className='text-center pb-2 text-neutral hover:text-white duration-300 my-2' style={{fontSize:'1.5em'}}>Blogs</h1>
         <div className="stack">
             <div className={`${cards} mx-auto origin-center`}>
                 <div className="card-body">

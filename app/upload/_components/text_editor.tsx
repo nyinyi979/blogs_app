@@ -3,7 +3,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import axios from "axios";
 import { useEffect, useRef } from "react";
 //TINYMCE EDITOR 
-export default function Text_Editor(props: {id: string}){
+export default function Text_Editor(){
     let editorRef = useRef<Editor|any>(null);
     let title = useRef<HTMLInputElement>(null);
     let category = useRef<HTMLInputElement>(null);

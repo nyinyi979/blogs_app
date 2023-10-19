@@ -1,5 +1,4 @@
 "use client"
-import { Publish_ } from "@/app/_componenets/dynamic_components/getBlogs";
 import { Editor } from "@tinymce/tinymce-react";
 import {FaFloppyDisk} from 'react-icons/fa6';
 import {ImCross} from 'react-icons/im'
@@ -8,6 +7,8 @@ import { useRef, useState } from "react";
 import { displayMSG } from "@/app/_componenets/pop_ups";
 import { BiSolidMessageSquareAdd } from "react-icons/bi";
 import {TiTickOutline} from 'react-icons/ti';
+import { AiFillCheckSquare, AiFillCloseCircle } from "react-icons/ai";
+import { FaTrashAlt } from "react-icons/fa";
 //TINYMCE EDITOR 
 export default function Text_EditorP(props: {id: string, title:string , content: string , category:{name: string}[] , published: boolean, modifiedAt: string}){
   let editorRef = useRef<Editor|any>(null);
@@ -16,6 +17,7 @@ export default function Text_EditorP(props: {id: string, title:string , content:
     let [ category , setCategory ] = useState('');
     let [ loading , setLoading ] = useState(false);
     let modifed  = (props.modifiedAt)
+
     function log(){
 
       //checking empty title
@@ -43,6 +45,7 @@ export default function Text_EditorP(props: {id: string, title:string , content:
     //category adding
     function addCat(id:string){
       setLoading(true);
+
       //pattern matching
       let pattern2 = /['":;{}()\/\]\[ ]/g;
         if(category.match(pattern2)){
@@ -59,6 +62,7 @@ export default function Text_EditorP(props: {id: string, title:string , content:
           }, 2000)
           return;
         }
+
         //request made to server
         axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/addCategory' , {id: id , name: category} )
         .then((res)=>{
@@ -77,6 +81,7 @@ export default function Text_EditorP(props: {id: string, title:string , content:
     }
 
     //remove category
+
     function removeCat(id: string , category:string ){
       setLoading(true);
       axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/removeCategory' , {id: id , name: category} )
@@ -90,7 +95,9 @@ export default function Text_EditorP(props: {id: string, title:string , content:
       })
       setLoading(false);
     }
+
     //category box
+
     function showInput(type: 'O'|'C'){
       setLoading(true);
       if(type === 'O'){
@@ -112,7 +119,7 @@ export default function Text_EditorP(props: {id: string, title:string , content:
         <Editor 
         onInit={(evt, editor) => editorRef.current = editor}
         id='editor'
-        
+        //INITIAL VALUE returned from server for existing blog
         initialValue={props.content}
         init={{
           menubar: ' edit view insert format tools table help',
@@ -151,3 +158,78 @@ export default function Text_EditorP(props: {id: string, title:string , content:
     )
 }
 
+//PUBLISHING , it is used in standalone edition page:) 
+//BG color is linked to posts published or unpubilshed status in profile, so it is just for edition page
+export function Publish_(props: {ID: string , published: boolean, title: string}){
+  let [published , setPublished ] = useState<Boolean|null>(props.published);
+  function doStuff(){
+      let old_val = published;
+      setPublished(null);
+      if(old_val){
+          axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/unPublishBlog' , {params: {id: props.ID}})
+          .then(()=>{
+              displayMSG('s', 'Successfully unpublished!');
+              setPublished(!old_val);
+          })
+          .catch(()=>{
+              displayMSG('e', 'Something went wrong!');
+              setPublished(old_val);
+          })
+      }
+      else {
+          axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/publishBlog', {params: {id: props.ID}})
+          .then(()=>{
+              displayMSG('s' , 'Successfully published!');
+              setPublished(!old_val);
+          })
+          .catch(()=>{
+              displayMSG('e' , 'Something went wrong');
+              setPublished(old_val);
+          })
+      }
+  }
+  return (
+      <>
+      <button className="btn md:btn-sm btn-xs rounded-none btn-info" onClick={()=>{published === null? null : doStuff()}}>
+          {published===null? <span className="loading loading-spinner"></span> : 
+          published? 'Published' : 'Not published!'}{published? <AiFillCheckSquare /> : <AiFillCloseCircle />}
+      </button>
+      <DeleteModal_E id={props.ID} title={props.title} />
+      </>
+  )
+}
+
+//deleting in edit mode
+export function DeleteModal_E(props: {id: string , title: string}){
+  //deletion logic
+  function Delete(){
+      document.getElementById('my-modal')!.style.display = 'none';
+      document.getElementById('my-modal')!.click();
+      axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/deleteBlog', {id: props.id})
+      .then((res)=>{
+        displayMSG('s' , 'Successfully deleted');
+        window.location.assign('/profile');
+      })
+      .catch(()=>{
+        displayMSG('e', 'Something went wrong');
+      })
+
+  }
+  return (
+      <>
+      <label htmlFor='my-modal' className="btn md:btn-sm btn-xs rounded-none btn-error">Delete this! <FaTrashAlt /></label>
+      
+      <input type="checkbox" id='my-modal' className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box bg-error">
+          <h3 className="font-bold text-lg text-primary">{props.title}</h3>
+          <p className="py-4 text-primary-focus">You are about to delete this post! </p>
+          <div className="modal-action">
+            <button className="btn md:btn-sm btn-xs btn-ghost border-slate-300 border-2" onClick={()=>{Delete()}}>Delete post :(</button>
+            <label htmlFor='my-modal' className="btn md:btn-sm btn-xs btn-primary">Cancel</label>
+          </div>
+        </div>
+      </div>
+      </>
+  )
+}

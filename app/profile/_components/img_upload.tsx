@@ -124,6 +124,7 @@ export function Photo_Display(prop: {images: {url: string , location: string}[] 
   )
 }
 
+//Modal for deletion
 export function DeleteModal_Photo(props: {images: {url: string , location: string}}){
   //deletion logic
   let modal_id = `m_${props.images.location}`;

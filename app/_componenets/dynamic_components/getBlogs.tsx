@@ -4,7 +4,8 @@ import { useState } from "react";
 import { AiOutlineLike , AiFillCheckSquare, AiFillCloseCircle } from 'react-icons/ai';
 import { BiCommentDetail } from 'react-icons/bi';
 import axios from "axios";
-import { DeleteModal_E, displayMSG } from "../pop_ups";
+import { displayMSG } from "../pop_ups";
+//this is the loading UI for categories, createdat, home, author page
 export function GetBlogsUI(){
     let arr: React.JSX.Element[] = [];
     for(var i =0; i<5; i++){
@@ -38,13 +39,14 @@ export function GetBlogsUI(){
     return arr;
 }
 
-//GET THE MAIN BLOGS
+//this is the MAIN Components for categories, createdat, home, author page
 type prop_ = {author:{username: string}[] , categories:{name: string}[] , content: string , createdAt: string , id: string , images: {url: string , location: string}[] , title:string , comments: { commentedBy: { name: string }[] , content: string }[] , _count: {reactions: number , comments: number}}
 export function GetBlog(props:prop_ ){
     if(props === undefined) return;
     let parent_class = "grid grid-cols-2 md:grid-cols-3 col-span-2 gap-1 p-4 m-2 bg-gradient-to-tr from-primary to-secondary rounded-md lg:text-lg text-md scale-95 border-2 hover:border-neutral border-neutral-content duration-300 cursor-pointer";
     let blog_location = `/blogs/${props.id}`;
     let img_id = "";
+    //Image will only be checked if there is an image
     if(props.images[0]){
         img_id = props.images[0].url.split(".")[0];
         GetThumbnail(props.images[0].url , "w480h320" , img_id)
@@ -114,45 +116,6 @@ export function GetGrid(props:prop_ ){
 }
 
 
-//PUBLISHING , it is used in standalone edition page:) 
-//BG color is linked to posts in profile, so it is just for edition page
-export function Publish_(props: {ID: string , published: boolean, title: string}){
-    let [published , setPublished ] = useState<Boolean|null>(props.published);
-    function doStuff(){
-        let old_val = published;
-        setPublished(null);
-        if(old_val){
-            axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/unPublishBlog' , {params: {id: props.ID}})
-            .then(()=>{
-                displayMSG('s', 'Successfully unpublished!');
-                setPublished(!old_val);
-            })
-            .catch(()=>{
-                displayMSG('e', 'Something went wrong!');
-                setPublished(old_val);
-            })
-        }
-        else {
-            axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/publishBlog', {params: {id: props.ID}})
-            .then(()=>{
-                displayMSG('s' , 'Successfully published!');
-                setPublished(!old_val);
-            })
-            .catch(()=>{
-                displayMSG('e' , 'Something went wrong');
-                setPublished(old_val);
-            })
-        }
-    }
-    return (
-        <>
-        <button className="btn md:btn-sm btn-xs rounded-none btn-info" onClick={()=>{published === null? null : doStuff()}}>
-            {published===null? <span className="loading loading-spinner"></span> : 
-            published? 'Published' : 'Not published!'}{published? <AiFillCheckSquare /> : <AiFillCloseCircle />}
-        </button>
-        <DeleteModal_E id={props.ID} title={props.title} />
-        </>
-    )
-}
+
 
 

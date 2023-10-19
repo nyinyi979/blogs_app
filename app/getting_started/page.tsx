@@ -19,6 +19,8 @@ import edit_d2 from '@/app/_componenets/img/edit_d2.png';
 import edit_d3 from '@/app/_componenets/img/edit_d3.png';
 import {useState , useEffect} from 'react';
 
+//First time theme check will happen and will change the image background, 
+//NOTE: THE IMAGES WON'T CHANGE IF THE DARKMODE IS TOGGLED
 export default function GettingStarted(){
     let [ dark , setDark ] = useState(true);
     useEffect(()=>{
@@ -31,6 +33,7 @@ export default function GettingStarted(){
           } 
         themeCheck();
     } , [dark])
+    //New user page to get started in Z-Blog wooooooooooo
     return(
         <div className="scroll-smooth text-neutral bg-secondary md:text-lg mt-16 w-11/12 rounded-md mx-auto leading-8 border-2 border-neutral-focus">
             <div className="w-2/3 mx-auto p-2">

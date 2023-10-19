@@ -6,6 +6,7 @@ import GetThumbnail from "../../_componenets/dynamic_components/getImageData";
 let main_result: React.JSX.Element;
 let side_result: React.JSX.Element[] = [];
 let bottom_result: React.JSX.Element[] = [];
+//Note that login isn't check here, to allow user to read a certain blog without actually creating an account
 export  default function HomePage({params}: {params: {id: string}}){
     const [ blogs , setBlogs ] = useState<Boolean>(false);
     const [ main , setMain ] = useState<Boolean>(false);
@@ -18,6 +19,7 @@ export  default function HomePage({params}: {params: {id: string}}){
         }).catch(()=>{
             setError(true);
         })
+        //There is exactly 11 blogs to be shown beside the main blog
         axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/blogsByCategories',{params: {id: localStorage.user ,'t':11,'s':0}}).then((res)=>{
             let main_blog_removed = res.data.result.filter((item) => item.id !== params.id);
             side_result = GetSideContent(main_blog_removed );

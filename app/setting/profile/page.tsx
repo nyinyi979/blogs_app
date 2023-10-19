@@ -107,7 +107,9 @@ export default function Setting(){
     )
 }
 
+//Name edition box
 function NameBox(props: {name: string , id:string}){
+    //Checking if name is updated or not
     let old_value = props.name;
     let [ name , setName ] = useState(props.name);
     let [ disabled , setDisabled ] = useState(true);
@@ -142,12 +144,14 @@ function NameBox(props: {name: string , id:string}){
         </>
     )
 }
+//Username edition box
 function UsernameBox(props: {username: string , id:string}){
     let old_value = props.username;
     let pattern = /['":;{}()\/\]\[ ]/g;
     let [ username , setUsername ] = useState(props.username);
     let [ disabled , setDisabled ] = useState(true);
     function updateUsername(id: string){
+        //Checking if the username changed or not
         if(username === old_value) {
             setDisabled(true);
             displayMSG('e' , 'Same as the old one :)');
@@ -184,6 +188,7 @@ function UsernameBox(props: {username: string , id:string}){
     )
 }
 function PhoneBox(props: {phone: string , id:string}){
+    //Checking if phone is updated or not
     let old_value = props.phone;
     let [ phone , setPhone ] = useState(props.phone);
     let [ disabled , setDisabled ] = useState(true);
@@ -223,6 +228,7 @@ function EmailBox(props: {email: string , id:string}){
     let [ email , setEmail ] = useState(props.email);
     let [ disabled , setDisabled ] = useState(true);
     function updateEmail(id: string){
+        //checking if email is updated or not
         if(email === old_value) {
             setDisabled(true);
             displayMSG('e' , 'Same as the old one :)');
@@ -241,7 +247,7 @@ function EmailBox(props: {email: string , id:string}){
     }
     return (
         <>
-            <input type="text" id="name" value={email} onChange={(e)=>{setEmail(e.target.value)}} className="input input-secondary input-sm text-neutral" readOnly={disabled}/> 
+            <input type="email" id="name" value={email} onChange={(e)=>{setEmail(e.target.value)}} className="input input-secondary input-sm text-neutral" readOnly={disabled}/> 
             {disabled? 
                 <span className="btn btn-xs mx-1 btn-primary rounded-none" onClick={()=>{setDisabled(false)}}><BsPencilSquare className="inline"/></span> 
             : 

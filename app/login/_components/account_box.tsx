@@ -2,6 +2,7 @@ import { displayMSG } from "@/app/_componenets/pop_ups";
 import axios from "axios";
 import { useState } from "react"
 
+//LOGIN BOX
 export function Login(){
     let [ gmail , setGmail ] = useState('');
     let [ code , setCode ] = useState('');
@@ -9,6 +10,7 @@ export function Login(){
     function fetchCode(){
         axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/getCodeL', {mail: gmail})
         .then((res)=>{
+        //Different routes for getting code , because it will check the gmail existence before setting the code
             if(res.data.notFound) {
                 displayMSG('e' , 'The email is not valid ( Maybe you should create new account ) ');
                 return;
@@ -53,7 +55,7 @@ export function Login(){
     )
 }
 
-
+//SIGNUP BOX
 export function Signup(){
     let [ gmail , setGmail ] = useState('');
     let [ code , setCode ] = useState('');
@@ -63,10 +65,12 @@ export function Signup(){
     let [ username , setUsername ] = useState('');
     let [ phone , setPhone ] = useState('');
     function fetchCode(){
+        //Check if gmail is empty or not
         if(gmail === ''){
             document.getElementById('gmail')!.focus();
             return;
         }
+        //Different routes for getting code , because it will check the gmail existence before setting the code
         axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/getCodeS', {mail: gmail})
         .then((res)=>{
             if(res.data.notFound) {
@@ -87,6 +91,7 @@ export function Signup(){
             setSecond(true);
         }
     }
+    //Creation for a new account 
     function createAccount(){
         if(name === '' || username === ''|| phone === ''){
             document.getElementById('err')!.innerText = 'The input boxes must not be empty!!';

@@ -10,7 +10,7 @@ export default function Upload(){
     return (
     <>
         <div className='mt-16'>
-            <Text_Editor id='105146789843394512564'/>
+            <Text_Editor/>
         </div>
     </>
     );

@@ -1,7 +1,11 @@
+'use client'
 import Link from "next/link";
 import GetThumbnail from "../../../_componenets/dynamic_components/getImageData";
-import { AiOutlineLike } from 'react-icons/ai';
+import { AiFillLike, AiOutlineLike } from 'react-icons/ai';
 import { BiCommentDetail } from 'react-icons/bi';
+import {useState , useEffect} from 'react';
+import axios from "axios";
+import { displayMSG } from "@/app/_componenets/pop_ups";
 type prop_ = {author:{username: string}[] , categories:{name: string}[] , content: string , createdAt: string , id: string , images: {url: string , location: string}[] , title:string , comments: { commentedBy: { name: string , username: string }[] , content: string }[] , _count: {reactions: number , comments: number}}
 type props = prop_[];
 //MIDDLE contents and loading UI
@@ -25,7 +29,7 @@ export function GetMainContent(props:prop_){
             <div className="col-span-1 px-4 mb-4 text-neutral text-right">Created at : <Link className="link link-neutral hover:underline duration-300" href={`/createdAT/${props.createdAt.split("T")[0]}`}>{props.createdAt.split("T")[0]}</Link> </div>
             <div className="md:hidden text-neutral m-2 hover:text-white duration-500">Swipe left and right!</div>
             <div className="col-span-2">
-                <div className="btn btn-sm px-6 m-2 btn-primary"><AiOutlineLike/>{props._count.reactions}</div>
+                <LikeBox _count={props._count} id={props.id} />
                 <div className="btn btn-sm px-6 m-2 btn-primary"><BiCommentDetail/>{props._count.comments}</div>
             </div>
             <div className="col-span-2 rounded-sm m-2 p-4 bg-primary">
@@ -43,6 +47,58 @@ export function GetMainContent(props:prop_){
     )
     
 }
+let likeID = 0;
+function LikeBox(props:{_count: {reactions: number}, id:string }){
+    let [ like , setLike ] = useState(false);
+    let [ likeCount , setLikeCount ] = useState(props._count.reactions);
+    let [ loading , setLoading ] = useState(true);
+    useEffect(()=>{
+        axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/checkLike' , {params:{postID: props.id , userID: localStorage.user}})
+        .then((res)=>{
+            if(res.data === 'No') {
+                setLike(false);
+                setLoading(false);
+                return;
+            }
+            setLike(true);
+            likeID = res.data.id;
+            setLoading(false);
+        })
+    } , [props.id])
+    function Like(){
+        setLoading(true);
+        setLikeCount(likeCount + 1);
+        axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/addLike' , {params: {postID: props.id , userID: localStorage.user}})
+        .then((res)=>{
+            setLike(true);
+            likeID = res.data.id;
+            displayMSG('s', 'Liked');
+        })
+        .catch(()=>{
+            displayMSG('e' , 'Server error');
+        })
+        setLoading(false);
+    }
+    function UnLike(){
+        setLoading(true);
+        setLikeCount(likeCount - 1);
+        axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/removeLike' , {params: {id: likeID}})
+        .then(()=>{
+            setLike(false);
+            displayMSG('s' , 'Unliked');
+        })
+        .catch(()=>{
+            displayMSG('e', 'Server error');
+        })
+        setLoading(false);
+    }
+    return (
+        <>
+        {loading? <div className="btn btn-sm px-6 m-2 btn-primary"><span className="loading loading-spinner"></span></div> : <><div className={`btn btn-sm px-6 m-2 ${like? 'btn-primary' : 'btn-secondary'}`} onClick={()=>{like? UnLike() : Like()}}>{like? <AiFillLike /> : <AiOutlineLike />}{likeCount}</div></>}
+        </>
+    )
+}
+//loading UI For main blog
 export function GetMainUI(){
     return(
         <div className="animate-pulse grid grid-cols-2 md:col-span-2 md:row-span-6">
@@ -139,6 +195,7 @@ export function GetSideContent(props:props){
     }
     return arr;
 }
+//Side blogs loading UI
 export function GetSideUI(){
     let arr: React.JSX.Element[] = [];
     for(var i = 0; i<6; i++){
@@ -168,7 +225,7 @@ export function GetSideUI(){
     return arr;
 }
 
-//Bottom bar ( only in medium screen ) contents and loading UI
+//Bottom bar ( only in medium and small screen ) contents and loading UI
 export function GetBottomContents(props: props){
     let arr: React.JSX.Element[] = [];
     for(var i = props.length-3; i<props.length; i++){

@@ -1,11 +1,11 @@
 import '@/app/globals.css'
 import { useEffect } from 'react';
-import { deleteCookie } from 'cookies-next'
 export default function Loading(props: {user: any , new_user}){
     useEffect(()=>{
         localStorage.setItem('user' , props.user);
+        //if it is new user, will redirect to getting_started page
         if(props.new_user === 'true') {
-            window.location.assign('/setting/profile');
+            window.location.assign('/getting_started');
             return;
         }
         window.location.assign('/home');
@@ -17,6 +17,7 @@ export default function Loading(props: {user: any , new_user}){
         </div>
     )
 }
+//get the cookies
 export async function getServerSideProps(context){
     let cookies = context.req.cookies;
     return {props: {user : cookies.user , new_user: cookies.new}};

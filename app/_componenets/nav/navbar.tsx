@@ -32,7 +32,7 @@ export default function NavBar(){
         <Drawer/>
         {login? 
         <>
-          <div className="flex-initial tooltip tooltip-bottom tooltip-neutral inline-block z-10" data-tip="Create post"> <Link className={linkClass} href={'/upload'}>+</Link></div>
+          <div className="flex-initial tooltip tooltip-bottom tooltip-neutral inline-block z-10" data-tip="Create post"> <Link className={linkClass} id="/upload" href={'/upload'}>+</Link></div>
           <div className='flex-initial inline-block'><Link id='/home' className={linkClass} href={'/home'}>Home</Link></div>
           <div className='flex-initial inline-block'><Link id='/profile' className={linkClass} href={'/profile'}>Profile</Link></div>
         </>
@@ -43,6 +43,7 @@ export default function NavBar(){
       </div>
     )
 }
+//Drawer will only be visible in small screen
 function Drawer(){
   let [ login , setLogin ] = useState(false);
   useEffect(()=>{

@@ -15,10 +15,8 @@ export function GetMainContent(props:prop_){
             <div className="col-span-2 text-xl text-center text-neutral">{props.title}</div>
             <div className="col-span-1 px-4 text-neutral text-left">Author - <Link className="link link-neutral hover:underline duration-300" href={`/user/${props.author[0].username}`}>{props.author[0].username}</Link></div>
             <div className="col-span-1 px-4 text-neutral text-right">Posted on - <Link className="link link-neutral hover:underline duration-300" href={`/createdAT/${props.createdAt.split("T")[0]}`}>{props.createdAt.split("T")[0]}</Link></div>
-            <div className="col-span-2 w-11/12 h-fit mx-auto"><img src="" className="w-full h-full scale-95 border-4 shadow-md shadow-neutral-content border-primary-content bg-cover col-span-2 hover:border-secondary-focus duration-500 " alt="SAMPLE" width={700} height={1000} id="main_img"/></div>
-            <div className="col-span-2 my-2 p-4 leading-10 text-justify text-primary-content border-2 border-primary-focus indent-10">
-                {props.content}
-            </div>
+            {props.images.length === 0? <div className="col-span-2 w-11/12 h-fit mx-auto bg-primary"></div> : <div className="col-span-2 w-11/12 h-fit mx-auto"><img src="" className="w-full h-full scale-95 border-4 shadow-md shadow-neutral-content border-primary-content bg-cover col-span-2 hover:border-secondary-focus duration-500 " alt="SAMPLE" width={700} height={1000} id="main_img"/></div>}
+            <div className="col-span-2 my-2 p-4 leading-10 text-justify text-primary-content border-2 border-primary-focus indent-10" dangerouslySetInnerHTML={{__html : props.content}}></div>
             <div className="col-span-1">
             {props.categories.map((value , id)=>{
                 return (

@@ -14,9 +14,9 @@ export  default function HomePage({params}: {params: {id: string}}){
     useEffect(()=>{
         axios.get(process.env.NEXT_PUBLIC_BASE_FETCH_URL + `/blog/${params.id}`).then((res)=>{
             main_result = GetMainContent(res.data);
-            GetThumbnail(res.data.images[0].url , "w1024h768" , "main_img");
+            if(res.data.images.length !== 0) GetThumbnail(res.data.images[0].url , "w1024h768" , "main_img");
             setMain(true);
-        }).catch(()=>{
+        }).catch((err)=>{
             setError(true);
         })
         //There is exactly 11 blogs to be shown beside the main blog

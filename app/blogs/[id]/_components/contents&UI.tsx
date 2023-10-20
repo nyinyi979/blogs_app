@@ -261,7 +261,7 @@ export function GetBottomUI(){
     let arr: React.JSX.Element[] = [];
     for(var i = 0; i<3; i++){
         arr.push(
-            <div className="md:block hidden col-span-1 row-span-1 mt-2 p-4" key={i}>
+            <div className="animate-pulse md:block hidden col-span-1 row-span-1 mt-2 p-4" key={i}>
                 <div className="grid grid-cols-3 w-full gap-1 p-2">
                     <h1 className="col-span-2 rounded-md text-left w-3/4 h-4 bg-secondary"></h1>
                     <h2 className="col-span-1 rounded-md float-left mr-2 text-neutral w-full h-4 bg-secondary"></h2>

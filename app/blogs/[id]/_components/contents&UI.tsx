@@ -172,9 +172,7 @@ export function GetSideContent(props:props){
                     <div className="col-span-1 h-36 bg-cover rounded-sm bg-primary p-1 mt-3 hover:p-0 duration-300">
                         <img src="" alt="images" id={img_id} className="w-full h-full bg-cover"/>
                     </div>
-                    <div className="col-span-2 h-36 block text-clip overflow-clip text-neutral p-2">
-                        {props[i].content}
-                    </div>
+                    <div className="col-span-2 h-36 block text-clip overflow-clip text-neutral p-2" dangerouslySetInnerHTML={{__html: props[i].content}}></div>
                     <div className="col-span-3"> 
                         {props[i].categories.map((value , id)=>{
                             return (
@@ -237,9 +235,7 @@ export function GetBottomContents(props: props){
                     <div className="col-span-1 h-36 bg-cover rounded-sm bg-primary p-1 mt-3 hover:p-0 duration-300">
                         <img src="" alt="images" id={img_id} className="w-full h-full bg-cover"/>
                     </div>
-                    <div className="col-span-2 h-36 block text-clip overflow-clip text-neutral p-2">
-                        {props[i].content}
-                    </div>
+                    <div className="col-span-2 h-36 block text-clip overflow-clip text-neutral p-2" dangerouslySetInnerHTML={{__html: props[i].content}}></div>
                     <div className="col-span-3"> 
                         {props[i].categories.map((value , id)=>{
                             return (

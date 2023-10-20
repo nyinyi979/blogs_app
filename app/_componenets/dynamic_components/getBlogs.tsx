@@ -58,9 +58,7 @@ export function GetBlog(props:prop_ ){
             <div className="md:col-span-1 row-span-2 col-span-2 md:ml-5 bg-opacity-50">
                 {props.images[0]? <img src="" id={img_id} alt="images" className="h-full w-full rounded-md scale-95 hover:scale-100 mr-2 duration-300 bg-cover"/> : null}
             </div>
-            <div className="col-span-2 w-full h-52 max-md:h-32 leading-8 block text-clip overflow-clip text-neutral">
-                {props.content.replace(/<\/?[^>]+(>|$)/g, "")} 
-            </div>
+            <div className="col-span-2 w-full h-52 max-md:h-32 leading-8 block text-clip overflow-clip text-neutral" dangerouslySetInnerHTML={{__html: props.content}}></div>
             <div className="col-span-1"></div>
             <div className="col-span-1 text-right m-2"><Link href={blog_location} className="btn btn-accent md:btn-sm btn-xs duration-300">Continue reading </Link></div>
             <div className="col-span-1 ml-3">
@@ -95,9 +93,7 @@ export function GetGrid(props:prop_ ){
             <div className="col-span-2 ml-5 bg-opacity-50">
                 {props.images[0]? <img src="" id={img_id} alt="images" className="h-full rounded-sm scale-95 hover:scale-100 mr-2 duration-300 bg-cover"/> : null}
             </div>
-            <div className="col-span-2 w-full h-32 leading-8 block text-clip overflow-clip text-neutral p-4">
-                {props.content.replace(/<\/?[^>]+(>|$)/g, "")}    
-            </div>
+            <div className="col-span-2 w-full h-32 leading-8 block text-clip overflow-clip text-neutral p-4" dangerouslySetInnerHTML={{__html: props.content}}></div>
             <div className="col-span-1">
                 <div className="btn md:btn-sm btn-xs md:px-6 mx-2 btn-accent btn-outline"><AiOutlineLike/>{props._count.reactions}</div>
                 <div className="btn md:btn-sm btn-xs md:px-6 mx-2 btn-accent btn-outline"><BiCommentDetail/>{props._count.comments}</div>

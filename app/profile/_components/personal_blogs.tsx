@@ -111,9 +111,7 @@ export function GetBlogProfile(props: {val: prop}){
             <div className="md:col-span-1 row-span-2 col-span-2 md:ml-5">
                 <img src="" id={img_id} alt="images" className="h-full w-full rounded-md scale-95 hover:scale-100 mr-2 duration-300 bg-cover"/>
             </div>
-            <div className="col-span-2 row-span-2 w-full h-52 max-md:h-32 leading-8 block text-clip overflow-clip text-neutral-focus">
-                {props.val.content.replace(/<\/?[^>]+(>|$)/g, "")}    
-            </div>
+            <div className="col-span-2 row-span-2 w-full h-52 max-md:h-32 leading-8 block text-clip overflow-clip text-neutral-focus" dangerouslySetInnerHTML={{__html: props.val.content}}></div>
 
             <div className="col-span-1 mt-3">
                 {props.val.categories.map((value , id)=>{

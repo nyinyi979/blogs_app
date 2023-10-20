@@ -75,7 +75,7 @@ export default function Text_Editor(){
       />
       <div className="my-2">
         <div className="text-neutral my-2">Categories ( Separate categories with , )</div>
-        <input type="text" name="cat" id="cat" value={category.current?.value} placeholder='Disaster' size={40} className='input input-bordered input-primary input-md text-neutral' ref={category}/>
+        <input type="text" name="cat" id="cat" value={category.current?.value} placeholder='Disaster' className='input w-full input-bordered input-primary input-md text-neutral' ref={category}/>
         <div id="err" className="text-warning"></div>
       </div>
       <button className="btn btn-sm btn-primary my-2" onClick={log}>Save as draft!</button>

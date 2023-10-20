@@ -7,6 +7,8 @@ Blogging app
 - React , NextJS , Tailwind , React-Icons , DaisyUI
 ### Backend
 - NodeJS , Express( custom server for NextJS frontend )
+### Data fetching (connecting to rest API )
+- React Query ( tanstack ) , Axios
 ### Database and ORM
 - postgres db with Prisma ORM , Dropbox for Image storing
 ### Authentication  

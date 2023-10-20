@@ -53,7 +53,7 @@ export default function Text_Editor(){
     <div className="w-10/12 max-h-fit m-5 mx-auto">
       <div className="my-2">
         <div className="text-neutral my-2">Your blog&apos;s title</div>
-        <input type="text" name="name" id="name" value={title.current?.value} placeholder='TITLE' size={40} className='input input-bordered input-primary input-md text-neutral' ref={title}/>
+        <input type="text" name="name" id="name" value={title.current?.value} placeholder='TITLE' className='input w-full input-bordered input-primary input-md text-neutral' ref={title}/>
       </div>
         <Editor 
         onInit={(evt, editor) => editorRef.current = editor}

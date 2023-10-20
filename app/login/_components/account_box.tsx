@@ -7,7 +7,9 @@ export function Login(){
     let [ gmail , setGmail ] = useState('');
     let [ code , setCode ] = useState('');
     let [ code_ , setCode_ ] = useState('');
+    let [ loading , setLoading ] = useState(false);
     function fetchCode(){
+        setLoading(true);
         axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/getCodeL', {mail: gmail})
         .then((res)=>{
         //Different routes for getting code , because it will check the gmail existence before setting the code
@@ -16,14 +18,18 @@ export function Login(){
                 return;
             }
             setCode(res.data.code);
+            setLoading(false);
         })
         .catch(()=>{
             displayMSG('e' , 'Something went wrong');
+            setLoading(false);
         })
     }
     function checkCode(){
+        setLoading(true);
         if(code_ !== code) {
             displayMSG('e', 'The code is not correct')
+            setLoading(false);
         }
         else {
             axios.post(process.env.NEXT_PUBLIC_BASE_FETCH_URL + '/checkExistingUser' , {mail: gmail})
@@ -33,6 +39,7 @@ export function Login(){
             })
             .catch((err)=>{
                 displayMSG('e' , 'Server error');
+                setLoading(false);
             })
         }
     }
@@ -42,13 +49,14 @@ export function Login(){
             <div>
                 <span className="text-neutral my-2 block">Login: Enter your gmail!</span>
                 <input type="email" className="input input-secondary input-md text-neutral w-full my-2" placeholder="someone@gmail.com" name="gmail" id="gmail" value={gmail} size={30} onChange={(e)=>{setGmail(e.target.value)}} required/> <br />
-                <button type="submit" className="btn btn-sm btn-accent my-2 w-full" onClick={fetchCode}>Send a code!</button> <br />
+                {loading? <span className="btn btn-sm btn-accent my-2 w-full loading loading-spinner"></span> : <button type="submit" className="btn btn-sm btn-accent my-2 w-full" onClick={fetchCode}>Send a code!</button> }
+                <br />
             </div> 
             :
             <>
                 <span className="text-neutral my-2 block">We have sent you a code to the gmail! </span>
                 <input type="text" className="input bg-fixed input-secondary text-white font-bold w-full text-lg bg-neutral my-2 overflow-hidden caret-transparent duration-300" style={{backgroundSize: '2.79em', letterSpacing: '1.8em',outline:'none',fontFamily: "Courier New"}} maxLength={5} value={code_} onChange={(e)=>{setCode_(e.target.value)}}/> <br />
-                <button className="btn btn-sm btn-accent w-full" onClick={checkCode}>Login</button>
+                {loading? <span className="btn btn-sm btn-accent my-2 w-full loading loading-spinner"></span> : <button className="btn btn-sm btn-accent w-full" onClick={checkCode}>Login</button> }
             </>
             }
         </div>
@@ -64,7 +72,9 @@ export function Signup(){
     let [ name , setName ] = useState('');
     let [ username , setUsername ] = useState('');
     let [ phone , setPhone ] = useState('');
+    let [ loading , setLoading ] = useState(false);
     function fetchCode(){
+        setLoading(true);
         //Check if gmail is empty or not
         if(gmail === ''){
             document.getElementById('gmail')!.focus();
@@ -78,14 +88,18 @@ export function Signup(){
                 return;
             }
             setCode(res.data.code);
+            setLoading(false);
         })
         .catch(()=>{
             displayMSG('e' , 'Something went wrong');
+            setLoading(false);
         })
     }
     function checkCode(){
+        setLoading(true);
         if(code_ !== code) {
-            displayMSG('e', 'The code is not correct')
+            displayMSG('e', 'The code is not correct');
+            setLoading(false);
         }
         else {
             setSecond(true);
@@ -142,13 +156,13 @@ export function Signup(){
             <>
                 <span className="text-neutral my-2 block">Sign up: Enter your gmail!</span>
                 <input type="email" className="input input-secondary input-md text-neutral w-full my-2" placeholder="someone@gmail.com" name="gmail" id="gmail" value={gmail} size={30} onChange={(e)=>{setGmail(e.target.value)}}/> <br />
-                <button className="btn btn-sm btn-accent w-full" type="submit" onClick={fetchCode}>Sign up!</button> <br />
+                {loading? <span className="btn btn-sm btn-accent my-2 w-full loading loading-spinner"></span> :  <button className="btn btn-sm btn-accent w-full" type="submit" onClick={fetchCode}>Sign up!</button> }<br />
             </> 
             :
             <>
                 <span className="text-neutral my-2 block">We have sent you a code to the gmail! </span>
                 <input type="text" className="input bg-fixed input-secondary text-white font-bold w-full text-lg bg-neutral my-2 overflow-hidden caret-transparent duration-300" style={{backgroundSize: '2.79em', letterSpacing: '1.8em',outline:'none',fontFamily: "Courier New"}} maxLength={5} value={code_} onChange={(e)=>{setCode_(e.target.value)}}/> <br />
-                <button className="btn btn-sm btn-accent w-full" onClick={checkCode}>Signup!</button>
+                {loading? <span className="btn btn-sm btn-accent my-2 w-full loading loading-spinner"></span> : <button className="btn btn-sm btn-accent w-full" onClick={checkCode}>Signup!</button> }
             </>
             }
         </form>

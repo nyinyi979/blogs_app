@@ -268,7 +268,7 @@ export function GetBottomUI(){
                     <div className="col-span-1 rounded-md h-36 bg-secondary p-3 mt-3"> </div>
                     <div className="col-span-2 h-36 p-2"> 
                         <div className="w-full h-4 rounded-md bg-secondary m-2"></div>
-                        <div className="w-1/2 h-4 rounded-md bg-secondary m-2 ml-0 md:ml-24 lg:ml-36"></div>
+                        <div className="w-1/2 h-4 rounded-md bg-secondary m-2"></div>
                         <div className="w-full h-4 rounded-md bg-secondary m-2"></div>
                         <div className="w-1/2 h-4 rounded-md bg-secondary m-2 md:ml-20"></div>
                         <div className="w-full h-4 rounded-md bg-secondary m-2"></div>

@@ -34,7 +34,7 @@ export function GetMainContent(props:prop_){
                 {props.comments.map((value , i)=>{
                     return (
                         <div className="rounded-sm border-2 m-1 border-primary scale-95 hover:scale-100 duration-300 bg-gradient-to-tr from-primary to-secondary" key={i}>
-                            <div className="bg-secondary p-2"><Link href={`/user/${value.commentedBy[0].username}`}>{value.commentedBy[0].name}</Link></div>
+                            <div className="bg-secondary p-2 text-neutral"><Link href={`/user/${value.commentedBy[0].username}`}>{value.commentedBy[0].name}</Link></div>
                             <div className="bg-secondary p-2 text-neutral">{value.content}</div>
                         </div>
                     )

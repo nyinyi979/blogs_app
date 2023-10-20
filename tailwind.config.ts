@@ -59,9 +59,9 @@ const config: Config = {
       },
       light: {
           
-        "primary": "#b6b0ad",
+        "primary": "#c7b5ac",
                  
-        "secondary": "#C6B9B0 ",
+        "secondary": "#e0cec5 ",
                  
         "accent": "#3f3c38",
                  

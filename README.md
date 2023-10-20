@@ -28,4 +28,5 @@ Blogging app
 The backend and frontend are separate hosted on each separate server. ( Rest API ) <br />
 The backend code source is not available to read, of course , for security reasons <br />
 If there is a 'Server error' message shown, sever might be down :)  <br />
+if the images are not displaying right, it must be due to the expired Dropbox token ( it needs to be renewed 3-4 hours ), that can also cause user not being able to upload picture )
 Can see the application on - https://blogs-app-one.vercel.app/

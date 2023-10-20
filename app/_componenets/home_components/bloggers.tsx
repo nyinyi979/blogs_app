@@ -38,7 +38,7 @@ return(
                 </div>
                 <div className="float-left md:ml-4">
                     <p className="text-neutral pb-2 hidden md:block">Create post?</p>
-                    <Link className={`${linkClass} md:btn-md md:ml-0 `} href={'/upload'}>Read one!</Link>
+                    <Link className={`${linkClass} md:btn-md md:ml-0 `} href={'/upload'}>Create one!</Link>
                 </div>
               </>
               :

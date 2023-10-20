@@ -38,7 +38,7 @@ export default function GettingStarted(){
         <div className="scroll-smooth text-neutral bg-secondary md:text-lg mt-16 w-11/12 rounded-md mx-auto leading-8 border-2 border-neutral-focus">
             <div className="w-2/3 mx-auto p-2">
                 
-                Name , username , email( gmail ) , ph<h1 className="font-bold">User info!</h1>one number can be edited from <Link className="link link-neutral hover:underline" href={'/setting/profile'}>Setting &gt; Profile</Link> 
+               <h1 className="font-bold">User info!</h1> Name , username , email( gmail ) , phone number can be edited from <Link className="link link-neutral hover:underline" href={'/setting/profile'}>Setting &gt; Profile</Link> 
                  page. <br /> ( The setting page is accessible via side menu ). <br />
                 You can see the example here: 
                 <div className="mx-auto w-fit my-2">

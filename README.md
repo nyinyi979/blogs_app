@@ -1,5 +1,5 @@
 # blogs_app
-Blogging app 
+Blogging app ( PLEASE CHECK THE NOTES )
 
 ## Language and libraries used
 
@@ -25,6 +25,7 @@ Blogging app
 - Displaying all 3 pictures uploaded for each blog
 - Commenting on blogs
 ---
+## NOTES
 The backend and frontend are separate hosted on each separate server. ( Rest API ) <br />
 The backend code source is not available to read, of course , for security reasons <br />
 If there is a 'Server error' message shown, sever might be down :)  <br />

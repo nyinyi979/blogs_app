@@ -31,7 +31,7 @@ export function GetMainContent(props:prop_){
                 <div className="btn btn-sm px-6 m-2 btn-primary"><BiCommentDetail/>{props._count.comments}</div>
             </div>
             <div className="col-span-2 rounded-sm m-2 p-4 bg-primary">
-                {props.comments.map((value , i)=>{
+                {props.comments.length === 0? null : props.comments.map((value , i)=>{
                     return (
                         <div className="rounded-sm border-2 m-1 border-primary scale-95 hover:scale-100 duration-300 bg-gradient-to-tr from-primary to-secondary" key={i}>
                             <div className="bg-secondary p-2 text-neutral"><Link href={`/user/${value.commentedBy[0].username}`}>{value.commentedBy[0].name}</Link></div>

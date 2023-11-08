@@ -8,7 +8,7 @@ setInterval(()=>{
         accessToken = res.data;
     })
 } , 14400)
-let dropbox = new Dropbox({accessToken: accessToken});
+let dropbox = new Dropbox({accessToken: process.env.NEXT_PUBLIC_DROPBOX_TOKEN});
 //get image data for displaying in sidebar or in each blogs
 //two type SIZES are available 
 

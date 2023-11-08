@@ -67,7 +67,7 @@ function Drawer(){
         {login? 
         <div className="dropdown dropdown-end">
         <label tabIndex={0} className="btn btn-accent btn-outline btn-sm text-center w-full my-2 inline-flex md:hidden">Setting</label>
-        <ul tabIndex={0} className="dropdown-content z-[1] rounded-box w-fit bg-primary">
+        <ul tabIndex={0} className="dropdown-content z-[1] rounded-none w-fit bg-primary">
           <Link href={'/setting/profile'} className="btn btn-accent btn-sm w-full btn-outline rounded-none" id="/setting/profile">Profile</Link>
           <Link href={'/setting/notification'} className="btn btn-accent btn-sm w-full btn-outline rounded-none" id="/setting/notification">Notification & Others</Link>
         </ul>

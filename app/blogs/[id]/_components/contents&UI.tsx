@@ -170,7 +170,7 @@ export function GetSideContent(props:props){
                     <h1 className="col-span-2 text-sm w-11/12 text-neutral truncate text-left hover:text-neutral duration-300">{props[i].title}</h1>
                     <div className="col-span-1 text-sm text-right text-neutral ">Author - <Link href={`/user/${props[i].author[0].username}`} className="hover:underline duration-300">{props[i].author[0].username}</Link></div>
                     <div className="col-span-1 h-36 bg-cover rounded-sm bg-primary p-1 mt-3 hover:p-0 duration-300">
-                        <img src="" alt="images" id={img_id} className="w-full h-full bg-cover"/>
+                        {props[i].images.length !==0 ? <img src="" alt="images" id={img_id} className="w-full h-full bg-cover"/> : null}
                     </div>
                     <div className="col-span-2 h-36 block text-clip overflow-clip text-neutral p-2" dangerouslySetInnerHTML={{__html: props[i].content}}></div>
                     <div className="col-span-3"> 
@@ -187,7 +187,7 @@ export function GetSideContent(props:props){
                 </div>
             </div>
         )
-        GetThumbnail(props[i].images[0].url , "w256h256",img_id)
+        if(props[i].images.length !== 0) GetThumbnail(props[i].images[0].url , "w256h256",img_id)
     }
     return arr;
 }
@@ -233,7 +233,7 @@ export function GetBottomContents(props: props){
                     <h1 className="col-span-2 text-sm w-11/12 text-neutral truncate text-left hover:text-white duration-300">{props[i].title}</h1>
                     <div className="col-span-1 text-sm text-right text-neutral ">Author - <Link href={`/user/${props[i].author[0].username}`} className="hover:underline duration-300">{props[i].author[0].username}</Link></div>
                     <div className="col-span-1 h-36 bg-cover rounded-sm bg-primary p-1 mt-3 hover:p-0 duration-300">
-                        <img src="" alt="images" id={img_id} className="w-full h-full bg-cover"/>
+                        {props[i].images.length !==0 ? <img src="" alt="images" id={img_id} className="w-full h-full bg-cover"/> : null }
                     </div>
                     <div className="col-span-2 h-36 block text-clip overflow-clip text-neutral p-2" dangerouslySetInnerHTML={{__html: props[i].content}}></div>
                     <div className="col-span-3"> 
@@ -249,7 +249,7 @@ export function GetBottomContents(props: props){
                 </div>
             </div>
         )
-        GetThumbnail(props[i].images[0].url , "w256h256",img_id)
+        if(props[i].images.length !== 0 ) GetThumbnail(props[i].images[0].url , "w256h256",img_id)
     }
     return arr;
 }
